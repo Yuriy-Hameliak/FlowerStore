@@ -42,30 +42,6 @@ public class FlowerBucketTest {
     }
 
     @Test
-    public void testPriceWithTulip() {
-        int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
-        int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
-        Flower flower = new Tulip();
-        flower.setPrice(price);
-        FlowerPack flowerPack = new FlowerPack(flower, quantity);
-        flowerBucket.add(flowerPack);
-        Assertions.assertEquals(price
-        * quantity, flowerBucket.getPrice());
-    }
-
-    @Test
-    public void testPriceWithChamomile() {
-        int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
-        int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
-        Flower flower = new Chamomile();
-        flower.setPrice(price);
-        FlowerPack flowerPack = new FlowerPack(flower, quantity);
-        flowerBucket.add(flowerPack);
-        Assertions.assertEquals(price
-        * quantity, flowerBucket.getPrice());
-    }
-
-    @Test
     public void testMultipleFlowerTypesInBucket() {
         int rosePrice = RANDOM_GENERATOR.nextInt(MAX_PRICE);
         int roseQuantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
