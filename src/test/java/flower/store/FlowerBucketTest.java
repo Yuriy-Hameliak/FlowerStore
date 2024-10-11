@@ -18,27 +18,28 @@ public class FlowerBucketTest {
         flowerBucket = new FlowerBucket();
     }
 
-    @Test
-    public void testPrice() {
+    private void testFlowerPrice(Flower flower) {
         int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
         int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
-        Flower flower = new Rose();
         flower.setPrice(price);
         FlowerPack flowerPack = new FlowerPack(flower, quantity);
         flowerBucket.add(flowerPack);
-        Assertions.assertEquals(price
-        * quantity, flowerBucket.getPrice());
+        Assertions.assertEquals(price * quantity, flowerBucket.getPrice());
     }
+
     @Test
     public void testPriceWithRose() {
-        int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
-        int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
-        Flower flower = new Rose();
-        flower.setPrice(price);
-        FlowerPack flowerPack = new FlowerPack(flower, quantity);
-        flowerBucket.add(flowerPack);
-        Assertions.assertEquals(price
-        * quantity, flowerBucket.getPrice());
+        testFlowerPrice(new Rose());
+    }
+
+    @Test
+    public void testPriceWithTulip() {
+        testFlowerPrice(new Tulip());
+    }
+
+    @Test
+    public void testPriceWithChamomile() {
+        testFlowerPrice(new Chamomile());
     }
 
     @Test
@@ -61,18 +62,15 @@ public class FlowerBucketTest {
         int chamomileQuantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
         Flower chamomile = new Chamomile();
         chamomile.setPrice(chamomilePrice);
-        FlowerPack chamomilePack = 
-        new FlowerPack(chamomile, chamomileQuantity);
+        FlowerPack chamomilePack = new FlowerPack(chamomile, chamomileQuantity);
         flowerBucket.add(chamomilePack);
 
         double expectedPrice = rosePrice * roseQuantity
                             + tulipPrice * tulipQuantity
                             + chamomilePrice * chamomileQuantity;
 
-        Assertions.assertEquals(expectedPrice,
-         flowerBucket.getPrice());
+        Assertions.assertEquals(expectedPrice, flowerBucket.getPrice());
     }
-    
 
     @Test
     public void testEmptyBucketPrice() {
