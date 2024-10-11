@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 @Setter
 public class Flower {
+    public static final double DEFAULT_SEPALLENGHT = 5;
+    public static final double DEFAULT_PRICE = 10;
+
     @Getter
     private double sepalLength;
     private FlowerColor color;
@@ -14,11 +17,12 @@ public class Flower {
     public Flower() {
         this.flowerType = FlowerType.CHAMOMILE;
         this.color = FlowerColor.RED;
-        this.sepalLength = 5;
-        this.price = 10;
+        this.sepalLength = DEFAULT_SEPALLENGHT;
+        this.price = DEFAULT_PRICE;
     }
 
-    public Flower(FlowerType flowerType, FlowerColor color, double sepalLength, double price) {
+    public Flower(FlowerType flowerType,
+     FlowerColor color, double sepalLength, double price) {
         this.flowerType = flowerType;
         this.color = color;
         this.sepalLength = sepalLength;
@@ -28,7 +32,7 @@ public class Flower {
         return color.toString();
     }
 
-    public void setColor(FlowerColor color) {
-        this.color = color;
+    public void setColor(FlowerColor new_color) {
+        this.color = new_color;
     }
 }
