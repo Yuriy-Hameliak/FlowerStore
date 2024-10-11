@@ -26,6 +26,80 @@ public class FlowerBucketTest {
         flower.setPrice(price);
         FlowerPack flowerPack = new FlowerPack(flower, quantity);
         flowerBucket.add(flowerPack);
-        Assertions.assertEquals(price * quantity, flowerBucket.getPrice());
+        Assertions.assertEquals(price
+        * quantity, flowerBucket.getPrice());
+    }
+    @Test
+    public void testPriceWithRose() {
+        int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
+        Flower flower = new Rose();
+        flower.setPrice(price);
+        FlowerPack flowerPack = new FlowerPack(flower, quantity);
+        flowerBucket.add(flowerPack);
+        Assertions.assertEquals(price
+        * quantity, flowerBucket.getPrice());
+    }
+
+    @Test
+    public void testPriceWithTulip() {
+        int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
+        Flower flower = new Tulip();
+        flower.setPrice(price);
+        FlowerPack flowerPack = new FlowerPack(flower, quantity);
+        flowerBucket.add(flowerPack);
+        Assertions.assertEquals(price
+        * quantity, flowerBucket.getPrice());
+    }
+
+    @Test
+    public void testPriceWithChamomile() {
+        int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
+        Flower flower = new Chamomile();
+        flower.setPrice(price);
+        FlowerPack flowerPack = new FlowerPack(flower, quantity);
+        flowerBucket.add(flowerPack);
+        Assertions.assertEquals(price
+        * quantity, flowerBucket.getPrice());
+    }
+
+    @Test
+    public void testMultipleFlowerTypesInBucket() {
+        int rosePrice = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int roseQuantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
+        Flower rose = new Rose();
+        rose.setPrice(rosePrice);
+        FlowerPack rosePack = new FlowerPack(rose, roseQuantity);
+        flowerBucket.add(rosePack);
+
+        int tulipPrice = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int tulipQuantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
+        Flower tulip = new Tulip();
+        tulip.setPrice(tulipPrice);
+        FlowerPack tulipPack = new FlowerPack(tulip, tulipQuantity);
+        flowerBucket.add(tulipPack);
+
+        int chamomilePrice = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int chamomileQuantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
+        Flower chamomile = new Chamomile();
+        chamomile.setPrice(chamomilePrice);
+        FlowerPack chamomilePack = 
+        new FlowerPack(chamomile, chamomileQuantity);
+        flowerBucket.add(chamomilePack);
+
+        double expectedPrice = rosePrice * roseQuantity
+                            + tulipPrice * tulipQuantity
+                            + chamomilePrice * chamomileQuantity;
+
+        Assertions.assertEquals(expectedPrice,
+         flowerBucket.getPrice());
+    }
+    
+
+    @Test
+    public void testEmptyBucketPrice() {
+        Assertions.assertEquals(0, flowerBucket.getPrice());
     }
 }
