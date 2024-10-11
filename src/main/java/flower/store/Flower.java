@@ -32,7 +32,7 @@ public class Flower {
         return color.toString();
     }
 
-    public void setColor(FlowerColor new_color) {
-        this.color = new_color;
+    public void setColor(FlowerColor newColor) {
+        this.color = newColor;
     }
 }
