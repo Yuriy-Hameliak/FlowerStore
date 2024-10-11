@@ -9,27 +9,32 @@ import java.util.ArrayList;
 
 public class StoreTest {
     private Store store;
-    private FlowerBucket bucket1;
-    private FlowerBucket bucket2;
-
+    private FlowerBucket bucketOne;
+    private FlowerBucket bucketTwo;
+    private static final double SEPAL_LENGTH_ONE = 7.5;
+    private static final double SEPALLENGTHTWO = 6.0;
+    private static final double PRISEONE = 15;
+    private static final double PRISTWO = 10;
+    private static final int FIRST_QUANTITY = 10;
+    private static final int SECOND_QUANTITY = 5;
     @BeforeEach
     public void init() {
         store = new Store();
-        Flower rose = new Flower(FlowerType.ROSE, FlowerColor.RED, 7.5, 15);
-        Flower tulip = new Flower(FlowerType.TULIP, FlowerColor.BLUE, 6.0, 10);
+        Flower rose = new Flower(FlowerType.ROSE, FlowerColor.RED, SEPAL_LENGTH_ONE, PRISEONE);
+        Flower tulip = new Flower(FlowerType.TULIP, FlowerColor.BLUE, SEPALLENGTHTWO, PRISTWO);
 
-        FlowerPack rosePack = new FlowerPack(rose, 10);
-        FlowerPack tulipPack = new FlowerPack(tulip, 5);
+        FlowerPack rosePack = new FlowerPack(rose, FIRST_QUANTITY);
+        FlowerPack tulipPack = new FlowerPack(tulip, SECOND_QUANTITY);
 
-        bucket1 = new FlowerBucket();
-        bucket1.add(rosePack);
+        bucketOne = new FlowerBucket();
+        bucketOne.add(rosePack);
 
-        bucket2 = new FlowerBucket();
-        bucket2.add(tulipPack);
+        bucketTwo = new FlowerBucket();
+        bucketTwo.add(tulipPack);
 
         List<FlowerBucket> flowerBuckets = new ArrayList<>();
-        flowerBuckets.add(bucket1);
-        flowerBuckets.add(bucket2);
+        flowerBuckets.add(bucketOne);
+        flowerBuckets.add(bucketTwo);
         store.setFlowerBuckets(flowerBuckets);
     }
 
@@ -41,7 +46,7 @@ public class StoreTest {
         List<FlowerBucket> result = store.search(searchTypes);
 
         Assertions.assertEquals(1, result.size());
-        Assertions.assertTrue(result.contains(bucket1));
+        Assertions.assertTrue(result.contains(bucketOne));
     }
 
     @Test
