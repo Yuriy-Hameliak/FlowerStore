@@ -5,7 +5,8 @@ public class Rose extends Flower {
         super();
         this.setFlowerType(FlowerType.ROSE);
     }
-    public Rose(FlowerType flowerType, FlowerColor color, double sepalLength, double price) {
+    public Rose(FlowerType flowerType,
+     FlowerColor color, double sepalLength, double price) {
         super(FlowerType.ROSE, color, sepalLength, price);
     }
     
